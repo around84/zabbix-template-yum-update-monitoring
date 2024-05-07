@@ -8,8 +8,8 @@
 TEMP_ZBX_FILE=/tmp/zabbix_yum_check_output.tmp
 echo -n "" > $TEMP_ZBX_FILE
 
-ZBX_HOSTNAMEITEM_PRESENT=$(egrep ^HostnameItem /etc/zabbix_agentd.conf -c)
-ZBX_SERVERACTIVEITEM=$(egrep ^ServerActive /etc/zabbix_agentd.conf | cut -d = -f 2)
+ZBX_HOSTNAMEITEM_PRESENT=$(egrep ^HostnameItem /etc/zabbix/zabbix_agentd.conf -c)
+ZBX_SERVERACTIVEITEM=$(egrep ^ServerActive /etc/zabbix/zabbix_agentd.conf | cut -d = -f 2)
 
 # Check if ServerActive is available
 if [ -z "$ZBX_SERVERACTIVEITEM" ]; then
@@ -21,7 +21,7 @@ fi
 if [ "$ZBX_HOSTNAMEITEM_PRESENT" -ge "1" ]; then
         ZBX_HOSTNAME=$(hostname)
 else
-        ZBX_HOSTNAME=$(egrep ^Hostname /etc/zabbix_agentd.conf | cut -d = -f 2)
+        ZBX_HOSTNAME=$(egrep ^Hostname /etc/zabbix/zabbix_agentd.conf | cut -d = -f 2)
 fi
 
 CHECK_UPDATES=$(yum check-update)
