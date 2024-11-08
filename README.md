@@ -32,7 +32,7 @@ This template was tested on:
 ## On all hosts you want to monitor:
 - Install packages zabbix-agent and zabbix-sender (if not installed):
 
-     `apt-get install zabbix-agent zabbix-sender`
+     `yum install zabbix-agent zabbix-sender`
 
 - Copy or wget agent_scripts/apt_upgrade_agent_script.sh from this repo into host folder (example): /etc/zabbix/custom_scripts
 
